@@ -20,7 +20,7 @@ public class Client {
     @Column(nullable = false)
     private Date date;
 //    Relation
-//    Relation with purchase
+//    Relation with purchase 1:N
     @OneToMany(mappedBy = "clientId")
     private List<Purchase> purchases;
 
