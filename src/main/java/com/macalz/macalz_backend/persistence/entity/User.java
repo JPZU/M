@@ -15,9 +15,14 @@ public class User {
     private String name;
     @Column(length = 250, nullable = false, unique = true)
     private String email;
+//    relation
+//    Relation with UserType
     @ManyToOne
     @JoinColumn(name = "user_type_id")
     private UserType userType;
+//    Relation with Purchase
+    @OneToMany(mappedBy = "userId")
+    private List<Purchase> purchases;
 
     public User() {}
 
