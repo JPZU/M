@@ -11,5 +11,22 @@ public class PaymentTypeDTO {
     @NotBlank(message = "Name cannot be blank")
     @Size(max = 50, message = "Name must not exceed 50 characters")
     private String name;
+
     public PaymentTypeDTO() {}
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPaymentTypeId() {
+        return paymentTypeId;
+    }
+
+    public void setPaymentTypeId(int paymentTypeId) {
+        this.paymentTypeId = paymentTypeId;
+    }
 }

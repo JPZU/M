@@ -69,4 +69,5 @@ public class ClientDTO {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
 }
