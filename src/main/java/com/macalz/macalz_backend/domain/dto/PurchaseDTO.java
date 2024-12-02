@@ -19,6 +19,8 @@ public class PurchaseDTO {
 
     @NotNull(message = "User ID is required")
     private UserDTO user;
+    @NotNull(message = "Client ID is required")
+    private ClientDTO client;
 
     @NotNull(message = "Tax ID is required")
     private TaxDTO tax;
@@ -27,6 +29,14 @@ public class PurchaseDTO {
     private PaymentTypeDTO paymentType;
 
     public PurchaseDTO() {}
+
+    public ClientDTO getClient() {
+        return client;
+    }
+
+    public void setClient(ClientDTO client) {
+        this.client = client;
+    }
 
     public double getDiscount() {
         return discount;

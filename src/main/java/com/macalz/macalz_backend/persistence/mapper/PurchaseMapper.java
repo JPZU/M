@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-@Mapper(componentModel = "spring", uses = {UserMapper.class, TaxMapper.class, PaymentTypeMapper.class}
+@Mapper(componentModel = "spring", uses = {UserMapper.class, ClientMapper.class,TaxMapper.class, PaymentTypeMapper.class}
 )
 public interface PurchaseMapper {
 
@@ -15,6 +15,7 @@ public interface PurchaseMapper {
             @Mapping(source = "purchaseId", target = "purchaseId"),
             @Mapping(source = "purchaseDate", target = "purchaseDate"),
             @Mapping(source = "discount", target = "discount"),
+            @Mapping(source = "clientId", target = "client"),
             @Mapping(source = "userId", target = "user"),
             @Mapping(source = "taxId", target = "tax"),
             @Mapping(source = "paymentType", target = "paymentType")
@@ -23,6 +24,5 @@ public interface PurchaseMapper {
 
     @InheritInverseConfiguration
     @Mapping(target = "purchaseProducts", ignore = true) // Ignorar la relación 1:N
-    @Mapping(target = "clientId", ignore = true) // Ignorar cliente si no está en el DTO
     Purchase toPurchase(PurchaseDTO purchaseDTO);
 }
