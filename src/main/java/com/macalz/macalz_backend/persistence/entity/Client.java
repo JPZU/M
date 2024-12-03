@@ -17,8 +17,6 @@ public class Client {
     private String phone;
     @Column(length = 100, nullable = false, unique = true)
     private String email;
-    @Column(nullable = false)
-    private Date date;
 //    Relation
 //    Relation with purchase 1:N
     @OneToMany(mappedBy = "clientId")
@@ -33,14 +31,6 @@ public class Client {
 
     public void setClientId(String clientId) {
         this.clientId = clientId;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public String getEmail() {

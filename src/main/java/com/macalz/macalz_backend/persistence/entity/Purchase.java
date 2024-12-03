@@ -14,7 +14,7 @@ public class Purchase {
     private Long purchaseId;
     @Column(name = "purchase_date", nullable = false)
     private LocalDateTime purchaseDate;
-    @Column(columnDefinition = "CHECK (discount BETWEEN 0 AND 100)")
+
     private Double discount;
 
 //    Relation

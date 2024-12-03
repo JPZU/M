@@ -25,9 +25,6 @@ public class ClientDTO {
     @Size(max = 100, message = "Email must not exceed 100 characters")
     private String email;
 
-    @NotNull(message = "Date is required")
-    private Date date;
-
     public ClientDTO() {}
 
     public String getClientId() {
@@ -36,14 +33,6 @@ public class ClientDTO {
 
     public void setClientId(String clientId) {
         this.clientId = clientId;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public String getEmail() {

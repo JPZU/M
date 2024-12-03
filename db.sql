@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS purchase_products;
 
 -- Crear tablas
 CREATE TABLE user_types (
-    user_type_id TINYINT AUTO_INCREMENT PRIMARY KEY,
+    user_type_id INTEGER AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL
 );
 
@@ -25,7 +25,7 @@ CREATE TABLE users (
     user_id VARCHAR(11) NOT NULL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     email VARCHAR(250) NOT NULL UNIQUE, -- Email único
-    user_type_id TINYINT,
+    user_type_id INTEGER,
     CONSTRAINT fk_user_types_user_type_id FOREIGN KEY (user_type_id) 
     REFERENCES user_types(user_type_id) 
     ON UPDATE CASCADE
@@ -36,28 +36,27 @@ CREATE TABLE clients (
     client_id VARCHAR(10) NOT NULL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     phone VARCHAR(10) NOT NULL, 
-    email VARCHAR(100) NOT NULL UNIQUE,
-    created_date DATE NOT NULL
+    email VARCHAR(100) NOT NULL UNIQUE
 );
 
 CREATE TABLE taxes (
-    tax_id TINYINT AUTO_INCREMENT PRIMARY KEY,
+    tax_id INTEGER AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     rate DECIMAL(5,2) NOT NULL CHECK (rate BETWEEN 0 AND 100)
 );
 
 CREATE TABLE payment_types (
-    payment_type_id TINYINT AUTO_INCREMENT PRIMARY KEY,
+    payment_type_id INTEGER AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE purchases (
     purchase_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     purchase_date DATETIME NOT NULL, -- No permite fechas futuras
-    discount DECIMAL(5,2) DEFAULT 0 CHECK (discount BETWEEN 0 AND 100),
+    discount DECIMAL(5,2),
     client_id VARCHAR(10) NOT NULL,
-    tax_id TINYINT NOT NULL,
-    payment_type_id TINYINT NOT NULL,
+    tax_id INTEGER NOT NULL,
+    payment_type_id INTEGER NOT NULL,
     user_id VARCHAR(11) NOT NULL,
     CONSTRAINT fk_clients_client_id FOREIGN KEY (client_id) 
     REFERENCES clients(client_id) 
@@ -121,10 +120,10 @@ INSERT INTO users (user_id, name, email, user_type_id) VALUES
 ('USR003', 'Emily Davis', 'emily.davis@example.com', 3);
 
 -- Insertar datos en clients
-INSERT INTO clients (client_id, name, phone, email, created_date) VALUES
-('CL001', 'Alice Brown', '1234567890', 'alice.brown@example.com', '2024-01-01'),
-('CL002', 'Bob Johnson', '0987654321', 'bob.johnson@example.com', '2024-02-15'),
-('CL003', 'Charlie Wilson', '1122334455', 'charlie.wilson@example.com', '2024-03-10');
+INSERT INTO clients (client_id, name, phone, email) VALUES
+('CL001', 'Alice Brown', '1234567890', 'alice.brown@example.com'),
+('CL002', 'Bob Johnson', '0987654321', 'bob.johnson@example.com'),
+('CL003', 'Charlie Wilson', '1122334455', 'charlie.wilson@example.com');
 
 -- Insertar datos en taxes
 INSERT INTO taxes (name, rate) VALUES
