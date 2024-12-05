@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Service
 public class ClientService {
+
     @Autowired
     private ClientRepository clientRepository;
 
@@ -35,8 +36,4 @@ public class ClientService {
             return true;
         }).orElse(false);
     }
-
-
-
-
 }

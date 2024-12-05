@@ -43,4 +43,39 @@ public class PaymentType {
     public void setPurchases(List<Purchase> purchases) {
         this.purchases = purchases;
     }
+
+    @PrePersist
+    public void prePersist() {
+        System.out.println("La entidad está siendo persistida.");
+    }
+
+    @PostPersist
+    public void postPersist() {
+        System.out.println("La entidad fue persistida.");
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        System.out.println("La entidad está siendo actualizada.");
+    }
+
+    @PostUpdate
+    public void postUpdate() {
+        System.out.println("La entidad fue actualizada.");
+    }
+
+    @PreRemove
+    public void preRemove() {
+        System.out.println("La entidad está siendo eliminada.");
+    }
+
+    @PostRemove
+    public void postRemove() {
+        System.out.println("La entidad fue eliminada.");
+    }
+
+    @PostLoad
+    public void postLoad() {
+        System.out.println("La entidad fue cargada en el contexto de persistencia.");
+    }
 }

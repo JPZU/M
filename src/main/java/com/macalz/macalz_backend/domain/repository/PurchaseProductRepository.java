@@ -9,7 +9,6 @@ public interface PurchaseProductRepository {
 
     List<PurchaseProductDTO> getAll();
     Optional<PurchaseProductDTO> getById(long id);
-    List<PurchaseProductDTO> getByPurchaseId(long purchaseId);
     PurchaseProductDTO save(PurchaseProductDTO purchaseProductDTO);
     void deleteById(long id);
 }
