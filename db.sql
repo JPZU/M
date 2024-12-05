@@ -14,8 +14,6 @@ DROP TABLE IF EXISTS clients;
 DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS purchases;
 DROP TABLE IF EXISTS purchase_products;
-DROP TABLE IF EXISTS pruchase_products;
-
 -- Crear tablas
 CREATE TABLE user_types (
     user_type_id INTEGER AUTO_INCREMENT PRIMARY KEY,
