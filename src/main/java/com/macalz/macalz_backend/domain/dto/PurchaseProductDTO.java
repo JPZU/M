@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Positive;
 
 public class PurchaseProductDTO {
 
-    private long id;
+    private Long id;
 
     @NotNull(message = "Quantity is required")
     @Positive(message = "Quantity must be greater than 0")
@@ -16,11 +16,11 @@ public class PurchaseProductDTO {
 
     public PurchaseProductDTO() {}
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

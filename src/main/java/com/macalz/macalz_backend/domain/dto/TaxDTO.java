@@ -3,8 +3,8 @@ package com.macalz.macalz_backend.domain.dto;
 import jakarta.validation.constraints.*;
 
 public class TaxDTO {
-    @NotNull(message = "Tax ID is required")
-    private int taxId;
+//    @NotNull(message = "Tax ID is required")
+    private Integer taxId;
 
     @NotBlank(message = "Name cannot be blank")
     @Size(max = 100, message = "Name must not exceed 100 character")
@@ -32,11 +32,11 @@ public class TaxDTO {
         this.rate = rate;
     }
 
-    public int getTaxId() {
+    public Integer getTaxId() {
         return taxId;
     }
 
-    public void setTaxId(int taxId) {
+    public void setTaxId(Integer taxId) {
         this.taxId = taxId;
     }
 }

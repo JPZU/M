@@ -7,8 +7,8 @@ import jakarta.validation.constraints.PositiveOrZero;
 import java.time.LocalDateTime;
 
 public class PurchaseDTO {
-    @NotNull(message = "Purchase ID is required")
-    private long purchaseId;
+//    @NotNull(message = "Purchase ID is required")
+    private Long purchaseId;
 
     @NotNull(message = "Date is required")
     private LocalDateTime purchaseDate;
@@ -54,11 +54,11 @@ public class PurchaseDTO {
         this.paymentType = paymentType;
     }
 
-    public long getPurchaseId() {
+    public Long getPurchaseId() {
         return purchaseId;
     }
 
-    public void setPurchaseId(long purchaseId) {
+    public void setPurchaseId(Long purchaseId) {
         this.purchaseId = purchaseId;
     }
 
