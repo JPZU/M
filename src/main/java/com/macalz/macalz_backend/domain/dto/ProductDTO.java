@@ -40,7 +40,7 @@ public class ProductDTO {
         return productId;
     }
 
-    public void setProductId(long productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 

@@ -5,6 +5,7 @@ import com.macalz.macalz_backend.domain.repository.PaymentTypeRepository;
 import com.macalz.macalz_backend.persistence.crud.PaymentTypeCrudRepository;
 import com.macalz.macalz_backend.persistence.entity.PaymentType;
 import com.macalz.macalz_backend.persistence.mapper.PaymentTypeMapper;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -38,10 +39,19 @@ public class PaymentTypeRepositoryImp implements PaymentTypeRepository {
 
     @Override
     public PaymentTypeDTO save(PaymentTypeDTO paymentTypeDTO){
-        PaymentType paymentTypeEntity = paymentTypeMapper.toPaymentType(paymentTypeDTO);
+        PaymentType paymentTypeEntity;
+
+        if(paymentTypeDTO.getPaymentTypeId()!= null){
+            paymentTypeEntity = paymentTypeCrudRepository.findById(paymentTypeDTO.getPaymentTypeId())
+                    .orElseThrow(() -> new EntityNotFoundException("PaymentType not found"));
+        }else{
+            paymentTypeEntity = paymentTypeMapper.toPaymentType(paymentTypeDTO);
+        }
         PaymentType savedPaymentType = paymentTypeCrudRepository.save(paymentTypeEntity);
+
         return paymentTypeMapper.toPaymentTypeDTO(savedPaymentType);
     }
+
 
     @Override
     public void delete(int paymentTypeId){
