@@ -3,8 +3,8 @@ package com.macalz.macalz_backend.domain.dto;
 import jakarta.validation.constraints.*;
 
 public class ProductDTO {
-    @NotNull(message = "Product ID is required")
-    private long productId;
+//    @NotNull(message = "Product ID is required")
+    private Long productId;
 
     @NotBlank(message = "Name cannot be blank")
     @Size(max = 100, message = "Name must not exceed 100 character")
@@ -36,7 +36,7 @@ public class ProductDTO {
         this.price = price;
     }
 
-    public long getProductId() {
+    public Long getProductId() {
         return productId;
     }
 

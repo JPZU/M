@@ -5,6 +5,7 @@ import com.macalz.macalz_backend.domain.repository.ProductRepository;
 import com.macalz.macalz_backend.persistence.crud.ProductCrudRepository;
 import com.macalz.macalz_backend.persistence.entity.Product;
 import com.macalz.macalz_backend.persistence.mapper.ProductMapper;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -38,10 +39,29 @@ public class ProductRepositoryImp implements ProductRepository {
 
     @Override
     public ProductDTO save(ProductDTO productDTO) {
-        Product productEntity = productMapper.toProduct(productDTO);
+        Product productEntity;
+
+        // Si `productId` no es null, se trata de una actualización
+        if (productDTO.getProductId() != null) {
+            productEntity = productCrudRepository.findById(productDTO.getProductId())
+                    .orElseThrow(() -> new EntityNotFoundException("Producto no encontrado con ID: " + productDTO.getProductId()));
+
+            // Actualiza los valores del producto existente
+            productEntity.setName(productDTO.getName());
+            productEntity.setPrice(productDTO.getPrice());
+            productEntity.setStock(productDTO.getStock());
+        } else {
+            // Si `productId` es null, se trata de una creación
+            productEntity = productMapper.toProduct(productDTO);
+        }
+
+        // Guarda el producto (ya sea creación o actualización)
         Product savedProduct = productCrudRepository.save(productEntity);
+
+        // Devuelve el producto guardado como DTO
         return productMapper.toProductDTO(savedProduct);
     }
+
 
     @Override
     public void deleteById(long productId){
