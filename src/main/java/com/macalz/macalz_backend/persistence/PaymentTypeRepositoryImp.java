@@ -44,6 +44,9 @@ public class PaymentTypeRepositoryImp implements PaymentTypeRepository {
         if(paymentTypeDTO.getPaymentTypeId()!= null){
             paymentTypeEntity = paymentTypeCrudRepository.findById(paymentTypeDTO.getPaymentTypeId())
                     .orElseThrow(() -> new EntityNotFoundException("PaymentType not found"));
+
+            paymentTypeEntity.setName(paymentTypeDTO.getName());
+
         }else{
             paymentTypeEntity = paymentTypeMapper.toPaymentType(paymentTypeDTO);
         }

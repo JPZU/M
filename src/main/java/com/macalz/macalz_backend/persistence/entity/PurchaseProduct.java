@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Positive;
 
 @Entity
-@Table(name = "pruchase_products")
+@Table(name = "purchase_products")
 public class PurchaseProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
