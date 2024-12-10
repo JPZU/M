@@ -8,7 +8,6 @@ import java.util.Optional;
 public interface UserRepository {
     List<UserDTO> getAll();
     Optional<UserDTO> getById(String userId);
-    Optional<List<UserDTO>> getByPaymentTypeId(int paymentTypeId);
     UserDTO save(UserDTO userDTO);
     void delete(String userId);
 }
