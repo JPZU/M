@@ -53,6 +53,7 @@ CREATE TABLE purchases (
     purchase_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     purchase_date DATETIME NOT NULL, -- No permite fechas futuras
     discount DECIMAL(5,2),
+    total DECIMAL(10,2) DEFAULT 0,
     client_id VARCHAR(10) NOT NULL,
     tax_id INTEGER NOT NULL,
     payment_type_id INTEGER NOT NULL,
